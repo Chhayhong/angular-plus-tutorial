@@ -1,0 +1,19 @@
+.example-container{
+    max-width: 600px;
+    margin: 16px auto;
+    align-items: baseline;
+    display: flex;
+    flex-direction: column;
+    .create-do{
+        display: flex;
+        mat-form-field{
+            max-width: 600px;
+            width:calc(100vw / 0.5) ;
+        }
+        button{
+            margin: 0px 5px;
+        }
+    }
+    
+}
+

@@ -1,0 +1,9 @@
+<div class="display-todo">
+  <mat-list role="list">
+    @for (todo of todos; track $index) {
+    <app-todo-card [todo]="todo" (updateTodo)="onUpdateValue($event)" (completeTodo)="onCompleted($event)"
+      (deleteTodo)="onDelete($event)"></app-todo-card>
+    <mat-divider></mat-divider>
+    }
+  </mat-list>
+</div>

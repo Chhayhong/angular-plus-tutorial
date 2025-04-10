@@ -1,0 +1,24 @@
+<div class="example-container">
+    <h4>{{isUpdate() ? 'Update' : 'Create'}} Todo</h4>
+    <div class="create-do">
+        <mat-form-field appearance="outline">
+            <mat-label>Enter todo name</mat-label>
+            <input matInput placeholder="Share todo app knowledge" [formControl]="name" (blur)="updateErrorMessage()"
+                required />
+            @if (name.invalid) {
+            <mat-error>{{errorMessage()}}</mat-error>
+            }
+        </mat-form-field>
+    
+        <button mat-mini-fab aria-label="Add todo" (click)="isUpdate() ? onUpdate() : onAddTodo()" [disabled]="this.name.invalid">
+            <mat-icon>{{isUpdate() ? 'edit': 'add'}}</mat-icon>
+        </button> 
+        <button mat-mini-fab aria-label="Add todo" (click)="onCancel()" [disabled]="!(this.name.value && this.name.value.length > 0)">
+            <mat-icon>cancel</mat-icon>
+        </button>   
+    </div>
+    <div class="display-todo">
+        <app-display-todo (updateTodo)="updateTodoValue($event)"></app-display-todo>
+    </div>
+</div>
+

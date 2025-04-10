@@ -1,0 +1,15 @@
+@if(todoForm){
+<section class="example-section" [formGroup]="todoForm">
+    <div class="todo-card">
+        <div><mat-checkbox formControlName="completed">{{todo?.name}}</mat-checkbox></div>
+        <div>
+            <button mat-button (click)="updateTodo.emit(todo)">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+            </button>
+            <button mat-button (click)="deleteTodo.emit(todo?.id)" color="warn">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+            </button>
+        </div>
+    </div>
+</section>
+}

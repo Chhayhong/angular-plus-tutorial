@@ -1,0 +1,14 @@
+<section>
+    <div class="example-button-row">
+        <!-- <a mat-raised-button routerLink="display"> <mat-icon>fact_check</mat-icon> To do list</a> -->
+        <a mat-raised-button routerLink="app"> <mat-icon>apps</mat-icon> TODO App - Angular Signal & Firebase</a>
+    </div>
+    <button mat-raised-button (click)="authService.onLogout()">Logout</button>
+</section>
+@if (authService.isProcessing()) {
+<div class="msg">
+    <p>Loading...</p>
+</div>
+}@else {
+    <router-outlet />
+}
