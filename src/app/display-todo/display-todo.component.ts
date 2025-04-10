@@ -23,10 +23,9 @@ export class DisplayTodoComponent implements OnInit {
       this.isLoading= this.todoService.isLoading()
     })
   }
-  
+
   ngOnInit(){
     this.todoService.getTodo()
-    
   }
 
   onCompleted(todo:TODO){

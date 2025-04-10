@@ -18,6 +18,7 @@ export class TodoService {
   async getTodo() {
     this.isLoading.set(true)
     await this.dataStore.getDBRef().then((querySnapshot) => {
+      this.todos.set([])
       querySnapshot.forEach((doc) => {
         this.todos.update((currentTodos) => [
           ...currentTodos,
