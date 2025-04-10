@@ -1,8 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, user } from '@angular/fire/auth';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { GuardService } from '../guard.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +9,17 @@ import { GuardService } from '../guard.service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  private auth: Auth = inject(Auth);
   private authService= inject(GuardService);
+  private route = inject(Router)
+  constructor(){
+    this.authService.user$.subscribe((user) => {
+      if (user) {
+        this.route.navigate(['/todo/app']);
+      }
+    })
+  }
+  
   emailPasswordLogin(email: string, password: string) {
    this.authService.onLogin(email, password)
   }
-
-  signOut() {
-    this.auth.signOut().then(() => {
-      console.log('sign out success')
-    }).catch((error) => {
-      console.error('sign out error: ',error)
-    })
-  }
-
 }

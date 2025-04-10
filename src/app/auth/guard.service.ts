@@ -1,7 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, user } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { finalize } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +13,12 @@ export class GuardService {
 
   constructor() {
     this.user$.subscribe((user) => {
-      this.isProcessing.set(false)
       if (user) {
         this.router.navigate(['/todo/app']);
       } else {
         this.router.navigate(['/login']);
       }
+      this.isProcessing.set(false)
     });
   }
 

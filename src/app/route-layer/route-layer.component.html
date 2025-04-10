@@ -5,10 +5,4 @@
     </div>
     <button mat-raised-button (click)="authService.onLogout()">Logout</button>
 </section>
-@if (authService.isProcessing()) {
-<div class="msg">
-    <p>Loading...</p>
-</div>
-}@else {
-    <router-outlet />
-}
+<router-outlet />
